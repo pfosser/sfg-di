@@ -1,7 +1,10 @@
 package it.paofos.sfgdi.controllers;
 
+import org.springframework.stereotype.Controller;
+
 import it.paofos.sfgdi.services.GreetingService;
 
+@Controller
 public class ConstructorInjectedController {
 
 	private final GreetingService greetingService;
