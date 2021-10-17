@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import it.paofos.sfgdi.services.GreetingServiceImpl;
+import it.paofos.sfgdi.services.ConstructorGreetingService;
 
 class SetterInjectedControllerTest {
 
@@ -14,7 +14,7 @@ class SetterInjectedControllerTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		controller = new SetterInjectedController();
-		controller.setGreetingService(new GreetingServiceImpl());
+		controller.setGreetingService(new ConstructorGreetingService());
 	}
 
 	@Test
