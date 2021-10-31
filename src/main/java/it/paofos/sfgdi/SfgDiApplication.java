@@ -12,7 +12,6 @@ import it.paofos.sfgdi.controllers.PetController;
 import it.paofos.sfgdi.controllers.PropertyInjectedController;
 import it.paofos.sfgdi.controllers.SetterInjectedController;
 
-@ComponentScan(basePackages = {"it.paofos.sfgdi", "com.paofos.pets"})
 @SpringBootApplication
 public class SfgDiApplication {
 
