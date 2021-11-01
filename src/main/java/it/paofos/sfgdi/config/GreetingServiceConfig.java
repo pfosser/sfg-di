@@ -2,6 +2,7 @@ package it.paofos.sfgdi.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 
@@ -17,6 +18,7 @@ import it.paofos.sfgdi.services.PrimaryGreetingService;
 import it.paofos.sfgdi.services.PropertyInjectedGreetingService;
 import it.paofos.sfgdi.services.SetterInjectedGreetingService;
 
+@ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 
@@ -31,7 +33,7 @@ public class GreetingServiceConfig {
 		return petServiceFactory.getPetService("dog");
 	}
 
-	@Profile( "cat")
+	@Profile("cat")
 	@Bean
 	PetService catPetService(PetServiceFactory petServiceFactory) {
 		return petServiceFactory.getPetService("cat");
@@ -60,7 +62,6 @@ public class GreetingServiceConfig {
 		return new PrimaryGreetingService();
 	}
 
-	@Bean
 	ConstructorGreetingService constructorGreetingService() {
 		return new ConstructorGreetingService();
 	}
