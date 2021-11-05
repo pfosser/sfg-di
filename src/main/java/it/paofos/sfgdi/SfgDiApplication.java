@@ -11,6 +11,7 @@ import it.paofos.sfgdi.controllers.MyController;
 import it.paofos.sfgdi.controllers.PetController;
 import it.paofos.sfgdi.controllers.PropertyInjectedController;
 import it.paofos.sfgdi.controllers.SetterInjectedController;
+import it.paofos.sfgdi.datasource.FakeDataSource;
 import it.paofos.sfgdi.services.PrototypeBean;
 import it.paofos.sfgdi.services.SingletonBean;
 
@@ -56,6 +57,12 @@ public class SfgDiApplication {
 		System.out.println(prototypeBean.getMyScope());
 		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean2.getMyScope());
+		
+		System.out.println("---- Property source --------");
+		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource.getUsername());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getJdbcurl());
 	}
 
 }
