@@ -1,11 +1,12 @@
 package it.paofos.sfgdi.config;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
+
 import com.paofos.pets.PetService;
 import com.paofos.pets.PetServiceFactory;
 
@@ -19,16 +20,17 @@ import it.paofos.sfgdi.services.PrimaryGreetingService;
 import it.paofos.sfgdi.services.PropertyInjectedGreetingService;
 import it.paofos.sfgdi.services.SetterInjectedGreetingService;
 
+@EnableConfigurationProperties(SfgConstructorConfig.class)
 @ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 
 	@Bean
-	FakeDataSource fakeDataSource(SfgConfiguration sfgConfiguration) {
+	FakeDataSource fakeDataSource(SfgConstructorConfig sfgConstructorConfig) {
 		FakeDataSource fakeDataSource = new FakeDataSource();
-		fakeDataSource.setUsername(sfgConfiguration.getUsername());
-		fakeDataSource.setPassword(sfgConfiguration.getPassword());
-		fakeDataSource.setJdbcurl(sfgConfiguration.getJdbcurl());
+		fakeDataSource.setUsername(sfgConstructorConfig.getUsername());
+		fakeDataSource.setPassword(sfgConstructorConfig.getPassword());
+		fakeDataSource.setJdbcurl(sfgConstructorConfig.getJdbcurl());
 		return fakeDataSource;
 	}
 
